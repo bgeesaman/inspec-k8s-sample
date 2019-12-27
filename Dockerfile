@@ -1,5 +1,6 @@
 FROM chef/inspec
 
+RUN echo 1
 RUN mkdir -p /etc/chef/accepted_licenses
 COPY inspec-accepted-license /etc/chef/accepted_licenses/inspec
 

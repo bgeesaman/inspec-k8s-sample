@@ -14,6 +14,47 @@ This example shows the implementation of an InSpec profile using the [inspec-k8s
 1. Run: `inspec exec . -t k8s://` from inside the root of this repo.
 1. Modify `controls/*.rb` as desired.
 
+## Docker Usage
+
+1. Clone this repo
+1. Run `make build` to build the Docker Image and accept the Chef Inspec License
+1. Ensure your valid kube config is in `~/.kube/config` in the proper context targeting the desired cluster.
+1. Run `make run`
+
+```
+Running in bgeesaman/inspec-k8s-runner:latest: inspec exec . -t k8s://
+
+Profile: InSpec K8s Profile (inspec-k8s-sample)
+Version: 0.1.0
+Target:  kubernetes://kubernetes.docker.internal:6443
+
+  ✔  k8s-1.0: Validate built-in namespaces
+     ✔  kube-system is expected to exist
+     ✔  kube-public is expected to exist
+     ✔  default is expected to exist
+  ✔  k8s-1.1: Validate kube-proxy
+     ✔  kube-system/kube-proxy-gr8cw pod is expected to exist
+     ✔  kube-system/kube-proxy-gr8cw pod is expected not to have latest container tag
+     ✔  kube-system/kube-proxy-gr8cw pod is expected to be running
+  ✔  k8s-1.2: Validate kube-dns
+     ✔  kube-system/coredns-5c98db65d4-cxl42 pod is expected to exist
+     ✔  kube-system/coredns-5c98db65d4-cxl42 pod is expected not to have latest container tag
+     ✔  kube-system/coredns-5c98db65d4-cxl42 pod is expected to be running
+     ✔  kube-system/coredns-5c98db65d4-vt4rb pod is expected to exist
+     ✔  kube-system/coredns-5c98db65d4-vt4rb pod is expected not to have latest container tag
+     ✔  kube-system/coredns-5c98db65d4-vt4rb pod is expected to be running
+
+
+Profile: InSpec Profile (inspec-k8s)
+Version: 0.1.2
+Target:  kubernetes://kubernetes.docker.internal:6443
+
+     No tests executed.
+
+Profile Summary: 3 successful controls, 0 control failures, 0 controls skipped
+Test Summary: 12 successful, 0 failures, 0 skipped
+```
+
 ## Example controls
 
 ### Singular Resource -- Namespace
