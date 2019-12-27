@@ -11,4 +11,4 @@ supports:
 depends:
   - name: inspec-k8s
     #path: ../inspec-k8s  # If you fork https://github.com/bgeesaman/inspec-k8s locally, you can develop/iterate locally
-    url: https://github.com/bgeesaman/inspec-k8s/archive/0.1.1.tar.gz # working remote profile
+    url: https://github.com/bgeesaman/inspec-k8s/archive/0.1.2.tar.gz # working remote profile
